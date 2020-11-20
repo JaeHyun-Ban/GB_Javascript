@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+
+    <script>
+      //배열을 생성하는 두번째 방법
+      var arr = new Array();//var arr = [];
+      console.log(arr);
+
+
+      var arr2 = new Array(10);//길이가 10인 빈공간의 배열
+      console.log(arr2);
+
+      var arr3 = new Array('a', 'b', 'c', 'd', 'e');//길이가 5이면서 초기화
+      console.log(arr3);
+      //>3개지 방법 모두 숙지
+
+      //배열을 다루는 다양한 메서드
+      //>자바스크립트는 MDN에서 잘 찾아보도록 하자
+      //https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+      //length - 배열의 길이
+      console.log(arr3.length);
+
+      //push() - 배열 끝에 항목 추가
+      arr.push(100);
+      arr.push(200);
+      console.log(arr);
+
+      //pop()- 배열 끝에서부터 항목 제거
+      arr.pop();
+      console.log(arr);
+
+      //unshift() - 배열의 앞에 항목 추가
+      arr.unshift(300);
+      console.log(arr);
+
+      //shift() - 배열의 앞에서부터 항목 제거
+      arr.shift();
+      console.log(arr);
+
+      //splice(index, 삭제개수)
+      arr3.splice(1, 2);
+      console.log(arr3);
+      //splice(index, 삭제개수, +추가할 값) 
+      //삭제개수가 0이라면 index뒤부터 값을 추가해준다
+      arr3.splice(1, 0, 'park', 'kim', 'ban');
+      console.log(arr3);
+
+
+      //sort() - 정렬(문자: 사전등재순서, 숫자: 오름차순, 문자+숫자: 유니코드값순서)
+      arr3.sort();
+      console.log(arr3);
+
+      //reverse() - 내림차순 정렬
+      arr3.reverse();
+      console.log(arr3);
+
+      //indexOf(값): 탐색(index값을 반환)
+      var find = arr3.indexOf("a");
+      console.log("a가 존재하는 index:", find);
+
+    </script>
+  </body>
+
+</html>

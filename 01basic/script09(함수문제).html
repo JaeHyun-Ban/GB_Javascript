@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+
+    <button type="button" onclick="check()">클릭</button>
+    <button type="button" onclick="method(1)">홀짝수를 판별하는 함수</button>
+    <!-- 매개변수를 넘겨줄 수 있다 -->
+
+
+    <script>
+      //다음 실행 구문을 일반함수와 익명함수로 생성해서 각각 확인
+      //일반함수
+      function check() {
+        alert("자바스크립트의 일반함수");
+      }
+      function method(x) {
+        if (x % 2 === 0) {
+          alert(x + "는 짝수입니다");
+        } else {
+          alert(x + "는 홀수입니다.");
+        }
+      }
+
+      //익명함수
+      // var check = function () {
+      //   alert("자바스크립트의 일반함수");
+      // }
+
+      // var method = function (x) {
+      //   if (x % 2 === 0) {
+      //     alert(x + "는 짝수입니다");
+      //   } else {
+      //     alert(x + "는 홀수입니다.");
+      //   }
+      // }
+
+      //매개변수 입력받고 평균값 출력
+      //익명함수와 일반함수를 각각생성
+      console.log(point("홍길동", 88, 90, 90));
+
+      //일반함수
+      function point(name, x, y, z) {
+        var avg = (x + y + z) / 3;
+        return name + "님의 평균은: " + avg;
+      }
+      //익명함수 >> 호이스팅이 불가능한 점을 주의
+      var point2 = function (name, x, y, z) {
+        var sum = x + y + z;
+        return name + "님의 평균은: " + (sum / 3);
+      }
+      console.log(point2("홍길동", 88, 90, 90));
+
+    </script>
+
+  </body>
+
+</html>

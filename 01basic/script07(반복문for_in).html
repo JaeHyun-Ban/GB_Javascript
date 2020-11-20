@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+
+    <script>
+      var arr = [1, 2, 3, 4, 5, "홍길동", "이순신"];
+
+      //주의 - 배열 객체의 index or key값을 변수에 저장
+      //변수에 index값을 저장한다
+      for (var i in arr) {
+        console.log(i);//index를 반환한다
+      }
+      //값을 뽑고싶다면?
+      for (var i in arr) {
+        console.log(arr[i]);
+      }
+
+      //JS에서 []는 배열 {}는 객체를 의미한다
+      //Java맵 = JS배열
+      var obj = { "key1": "가", "key2": "나", "key3": "다" }
+      console.log(obj);
+      for (var i in obj) {
+        console.log(i);//key값이 나온다
+        console.log(obj[i]);//value
+      }
+    </script>
+  </body>
+
+</html>

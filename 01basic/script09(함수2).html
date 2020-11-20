@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /* 매개변수와 return */
+      function func1(x) {//매개변수 타입을 작성하지 않아도 된다
+        var sum = 0;
+        for (var i = 1; i <= x; i++) {
+          sum += i;
+        }
+        return sum;//결과값 반환
+      }
+
+      function func2(x, y) {
+        return x + y;
+      }
+      var compute = function (x, y, z) {
+        return x + y + z;
+      }
+
+      console.log(func1(10));//55
+      //매개값이 서로 달라도 괜찮다
+      //>하지만 그래도 알맞게 매개값을 지정해주자
+      console.log(func2(10, 10));
+      console.log(func2("hello ", 10));
+      console.log(func2("hello ", "world"));
+
+      //매개변수 갯수를 안지킨다면?
+      console.log(func2());
+      console.log(func2(1, 2, 3));
+      console.log(func2(1, 2, 3, 4));
+      //지키지 않아도 괜찮지만, 개수에 맞춰서 전달하는 편이 좋습니다.
+
+      console.log(compute(1, 2, 3));
+
+    </script>
+  </body>
+
+</html>

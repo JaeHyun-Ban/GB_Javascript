@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+
+
+
+    <script>
+
+      /* 어떤 매개변수를 넣어도 영향을 끼치지 않는다 */
+      method(1, 2, 3, 4, 5, 6, 7, "hello");
+
+      //자바스크립트에서는 매개변수 자체가 큰 의미가 없다
+      //자바스크립트에서 매개변수는 단순히 인자값에 들어오는 값이 몇개인지 알려주고,
+      //쉽게 접근이 가능하도록 이름을 붙여놓은 형태입니다
+      function method(a, b) {
+        console.log("함수가 호출됨");
+
+        console.log(a, b);
+        /* 전달한 매개변수는 arguments로 전달된다 */
+        console.log(arguments);
+        //>길이가 8인 배열의 형태로 전달된다
+        //>__proto__: 형태
+        console.log(arguments.length);
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+        console.log(arguments[2]);
+        console.log(arguments[3]);
+        console.log(arguments[4]);
+        console.log(arguments[5]);
+        console.log(arguments[6]);
+        console.log(arguments[7]);
+
+        return a + b;
+      }
+
+    </script>
+
+  </body>
+
+</html>

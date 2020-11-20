@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+
+
+    <script>
+      /* 배열(리스트와 동일) */
+      // var arr = [];
+      var arr = [1, 2, 3];
+      arr[0] = 10;
+      arr[1] = 20;
+      console.log(arr);
+      console.log(arr[0], arr[1], arr[2]); //하나씩 직접 출력
+
+      var arr2 = ["안녕", "헬로", "니하오"];
+      arr2[0] = "방가방가";
+
+      console.log(arr2);
+      console.log("-------------------------------------")
+
+      var arr3 = [1, 2, 3, 4, 5, "hello"];//사용할 수는 있지만 위험하다
+      console.log(arr3);//숫자와 문자가 함께 배열로 가능
+
+      arr3[10] = 100;//존재하지 않는 10번째에 값을 넣기 가능
+      console.log(arr3);//빈공간은 비었다고 알려줌
+
+    </script>
+  </body>
+
+</html>

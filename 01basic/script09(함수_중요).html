@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <script>
+      //코드를 다룰 때 함수단위로 묶는것은 아주 유용함
+
+      //호이스팅(당겨호출하기): 선언적 함수에서만 사용이 가능하다
+      //>아래에 선언하고 위에서 끌어다 사용하는 것
+      func1();
+      func2();
+      // a();//변수에 저장하게되면 함수를 끌어다가 사용할 수는 없다
+      // b();//익명함수 또한 호이스팅이 불가능하다
+
+      //선언적 함수 vs 익명함수
+      function func1() {
+        console.log("func1실행");
+      }
+
+      function func2() {
+        console.log("func2실행");
+      }
+
+      //★함수자체를 변수에 저장할 수 있다.
+      var a = func1;//함수를 변수에 저장하는 문법
+      // var a = func1();//>함수의 실행결과를 받는 문법 >> 'X'
+      console.log(a);
+      a();//func1을 대신해서 호출할 수 있다 > ()=실행
+      func1();
+
+      console.log("-------------------------------");
+      console.log("-----------익명함수--------------");
+      //익명함수 - 변수에 함수를 저장해서, 마치 함수처럼 쓰도록 만들어 줍니다
+      //>호이스팅이 안됩니다
+      var b = function () {
+        console.log("func3실행");
+      }
+      b();//익명함수 호출
+
+
+
+
+
+    </script>
+  </body>
+
+</html>
