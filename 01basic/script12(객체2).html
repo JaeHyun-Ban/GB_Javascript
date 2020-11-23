@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //JSON이란? => JavaScriptObjectNotaion
+      //결국 객체를 주고받을 수는 없고, 문자열을 주고받게 될 것
+      //>주고받는 문자열을 다시 객체로 바꿀 수 있어야한다(JSON을 파싱한다?)
+
+      //JSON파싱: 원격에 있는 컴퓨터와 통신과정에서 데이터를 주고 받을 때
+      //문자열의 형태로 주고 받게 된다.
+      //문자열 > JSON, JSON > 문자열 =>>>>> JSON파싱
+      var data = [
+        { id: 'kkk123', title: 'java', content: 'good' },
+        { id: 'aaa123', title: 'jsp', content: 'nice' },
+        { id: 'bbb123', title: 'js', content: 'soso' }
+      ]
+      // console.log(typeof data);
+      // console.log(typeof JSON.stringify(data));//문자열로 변환
+      // console.log(JSON.stringify(data));//문자열로 변환
+
+      //★중요
+      var result = JSON.stringify(data);//제이슨 -> 문자열(String)로 변경
+      console.log(result);
+
+      var result2 = JSON.parse(result);//문자열 -> 제이슨(Object)
+      console.log(result2);
+
+      //{"id":"kkk123","title":"java","content":"good"}
+      //>문자열을 JSON으로 변경할 때, 엄격한 규칙을 지키는데
+      //key와 value가 ""로 처리되어야 한다
+      // var x = '{id: "kkk123"}';//문자열 > JSON X
+      var x = '{"id": "kkk123"}';//문자열 > JSON O
+      console.log(x);
+      var y = JSON.parse(x);
+      console.log(y);
+    </script>
+  </body>
+
+</html>

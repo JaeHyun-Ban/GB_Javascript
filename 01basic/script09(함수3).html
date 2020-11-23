@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+
+
+      function func1() {
+        alert("1번 함수");
+      }
+      function func2() {
+        alert("2번 함수");
+      }
+      /* 함수를 이용하는 자바스크립트의 특성을 잘 이용하자 */
+      (function (x, y, z) {
+        console.log("즉시실행함수");
+        console.log(x + y + z);
+        func1();
+        func2();
+      })(1, 2, 3);
+      /* >즉시실행함수의 실행문에 매개변수를 넣어서 보낼 수 있다. */
+      /* 람다는 나중에 사용하도록하자 */
+
+
+
+    </script>
+  </body>
+
+</html>
