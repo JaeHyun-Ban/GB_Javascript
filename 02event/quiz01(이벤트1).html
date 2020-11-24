@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+      1. checkobx버튼을 클릭했을 때 '1종 조항에 동의했습니다' 문구를 띄우고 value값을 확인(인라인 이벤트)
+      2. 기억하기 버튼을 클릭했을 때 input태그의 공백여부, 체크박스 여부를 확인
+      3. 확인을 누르면 각 각의 input들의 값이 콘솔에 보이도록 할 것
+    -->
+
+    <input type="checkbox" value="1" onclick="check(this)">조항1
+    <input type="checkbox" value="2" onclick="check(this)">조항2
+    <input type="checkbox" value="3" onclick="check(this)">조항3
+    <input type="checkbox" value="4" onclick="check(this)">조항4
+    <hr />
+    ID: <input type="text" id="id"> 기억하기<input type="checkbox" id="record">
+    <button type="button" id="btn" onclick="check2(this)">확인
+
+      <script>
+        //조항 알림 문구
+        function check(a) {
+          alert(a.value + "번 조항에 동의했습니다");
+        }
+
+        //확인버튼
+        //기억하기에 액션걸기
+        var record = document.getElementById("record");
+        var id = document.getElementById("id");
+        var btn = document.getElementById("btn");
+
+        btn.onclick = function () {
+          console.log('id: ' + id.value)
+          console.log('기억하기: ' + record.checked);//checked: 체크되어있는지 확인
+
+        }
+        // function check2(a) {
+        //   var record = document.getElementById("record");
+        //   var id = document.getElementById("id");
+
+        //   console.log('기억하기: ' + record.checked);//checked: 체크되어있는지 확인
+        //   console.log('id: ' + id.value)
+        // }
+
+      </script>
+  </body>
+
+</html>

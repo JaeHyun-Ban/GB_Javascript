@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h2 id="title">단어를 선택해주세요</h2>
+    <p>(select에서 value속성은 선택된 값을 의미합니다)</p>
+    <select name="lang" id="lang">
+      <!-- option의 text값이 자동으로 value값에 적용된다 -->
+      <option value="">선택</option>
+      <option value="kor">안녕하세요</option>
+      <option value="eng">hello</option>
+      <option value="jap">おはようございます。</option>
+    </select>
+
+    <script>
+      // var lang = document.getElementsByName("language");
+      var lang = document.getElementById("lang");
+      var title = document.getElementById("title");
+
+      console.log(lang);
+      console.log(title);
+      lang.onchange = function () {
+        if (lang.value === "eng") {
+          title.innerHTML = "영어 입니다";
+        } else if (lang.value === "kor") {
+          title.innerHTML = "한글 입니다";
+        } else if (lang.value === "jap") {
+          title.innerHTML = "일본어 입니다";
+        } else {
+          title.innerHTML = "단어를 선택해 주세요";
+        }
+
+      }
+    </script>
+
+  </body>
+
+</html>

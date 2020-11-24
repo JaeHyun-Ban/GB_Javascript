@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 내일까지 -->
+    <!-- 
+      +버튼, - 버튼 빈공간
+      +: 숫자증가
+      -: 숫자 감소
+      # 0이하로 내려갈 수는 없음
+     -->
+    <!-- 인라인 이벤트를 써서 하나의 함수에서 처리하기 -->
+    <h2>자바스크립트 카운트다운</h2>
+    <input type="text" value="0" id="count">
+    <button id="plus" onclick="count(this)">+</button>
+    <button id="minus" onclick="count(this)">-</button>
+
+    <script>
+      function count(a) {
+        var count = document.getElementById("count");
+
+        var check = a.innerHTML;
+
+
+        console.log(a.innerHTML);
+
+        if (check === "+") {
+          count.value = (parseInt(count.value) + 1);
+
+        } else if (check === "-") {
+          if (count.value === "0") {
+            return;
+          } else {
+            count.value = (parseInt(count.value) - 1);
+          }
+
+        }
+
+
+
+      }
+
+    </script>
+  </body>
+
+</html>

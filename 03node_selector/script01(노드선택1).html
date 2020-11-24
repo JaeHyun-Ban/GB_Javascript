@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <!-- 
+      # 이름들은 카멜표기법을 준수하며 작성!
+      getElementById()
+      getElementsByName()
+      getElementsByClassName() 
+      getElementsByTagName()  
+     -->
+
+    <script>
+      window.onload = function () {
+
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function () {
+          var interArr = document.getElementsByName("inter");//Element`s`라면 다중값이 들어있는거다
+          console.log(interArr);
+          for (var i = 0; i < interArr.length; i++) {
+            console.log(interArr[i]);
+            console.log(interArr[i].value);//속성 확인
+            console.log(interArr[i].checked);//체크되어 있는지 확인
+          }
+        }//end event
+
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function () {
+
+          //엘리먼트의 클래스이름이 apple인 요소를 얻는 기능
+          var arr = document.getElementsByClassName("apple");
+          console.log(arr);
+          for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+            console.log(arr[i].value);//값 확인
+            console.log(arr[i].checked);//radio의 체크 확인
+          }
+
+        }
+
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function () {
+          var select1 = document.getElementById("select1");
+          var arr = select1.getElementsByTagName("option");//select1의 option태그를 가져옴
+          for (var i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+            console.log(arr[i].value);
+            console.log(arr[i].selected);//option - 선택되어있는지 여부
+          }
+
+          console.log(arr);
+        }
+
+
+
+
+      }
+    </script>
+
+    <!-- naem: 파라미터를 받는 변수 명 -->
+    <div>
+      <button type="button" id="btn1">체크박스요소들 확인</button>
+      <input type="checkbox" name="inter" value="1">자바
+      <input type="checkbox" name="inter" value="2">JSP
+      <input type="checkbox" name="inter" value="3">JSX
+      <input type="checkbox" name="inter" value="4">SPRING
+      <input type="checkbox" name="inter" value="5">DB
+      <input type="checkbox" name="inter" value="6">JS
+    </div>
+
+
+    <div>
+      <button type="button" id="btn2">라디오버튼 확인</button>
+      <!-- name: 묶음용 / class: css적용 / value: 값 -->
+      <input type="radio" name="major" class="apple" value="1">프로그램
+      <input type="radio" name="major" class="apple" value="2">디자인
+      <input type="radio" name="major" class="apple" value="3">시스템
+      <input type="radio" name="major" class="apple" value="4">네트워크
+    </div>
+
+
+    <div>
+      <button type="button" id="btn3">셀렉트요소 확인</button>
+      <select name="" id="select1">
+        <option value="010">010</option>
+        <option value="02">02</option>
+        <option value="031">031</option>
+        <option value="051">051</option>
+        <option value="052">052</option>
+      </select>
+    </div>
+
+
+  </body>
+
+</html>
