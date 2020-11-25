@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      table {
+        /* 윤곽의 간격 */
+        border-spacing: 0;
+        border-collapse: collapse;
+
+      }
+
+      thead th {
+        border: 1px solid black;
+
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 1번인풋 사이즈3
+    3번인풋 사이즈 5 -->
+
+    <!-- 교시 / 훈련과목 / 담당자 / 훈련내용
+      5개씩추가 버튼, 1개씩추가 버튼
+      아래의 빈 공간이 각각 갯수별로 추가됨
+      -->
+    <script>
+      window.onload = function () {
+        var addList = document.getElementById("addList");
+        addList.addEventListener("click", createList);//이벤트 등록
+
+        function createList() {
+          var tr = document.createElement("tr");
+
+          // var input = document.createElement("input");
+          // input.type = "text";
+          // input.size = 3;
+          // var td = document.createElement("td");
+          // td.appendChild(input);
+          // tr.appendChild(td);
+          var str = "<input type='text' size='3'>";
+          var td = document.createElement("td");
+          td.innerHTML = str;
+          tr.appendChild(td);
+        }
+
+
+
+
+      }
+    </script>
+
+    <table>
+      <!-- 테이블 헤드 -->
+      <thead>
+        <!-- tr을 대신함 -->
+        <th>교시</th><!-- td를 대신함 -->
+        <th>훈련과목</th>
+        <th>담당자</th>
+        <th>훈련내용</th>
+      </thead>
+      <!-- 테이블 몸체 -->
+      <tbody id="body">
+        <!-- 하나의 행 -->
+        <tr>
+          <td><input type="text" size="3"></td>
+          <td><input type="text"></td>
+          <td><input type="text" size="5"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" id="addList">1개추가하기</button>
+    <button type="button" id="addList5">5개추가하기</button>
+
+
+
+
+
+
+  </body>
+
+</html>

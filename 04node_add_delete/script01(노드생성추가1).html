@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>innerHTML형식으로 만들어보기</h2>
+
+    <div id="content">
+
+    </div>
+
+    <script>
+      var content = document.querySelector("#content");
+      console.log(content);
+      content.innerHTML = "<p>요소 넣기!</p>";//문자열의 형식으로 추가
+    </script>
+
+    <!-- 응용! -->
+    <div id="inner1"></div>
+    <div id="inner2">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div id="inner3"></div>
+
+    <button type="button" id="btn1">버튼1</button>
+    <button type="button" id="btn2">버튼2</button>
+    <button type="button" id="btn3">버튼3</button>
+
+
+    <script>
+      var btn1 = document.getElementById("btn1");
+      btn1.onclick = function () {
+        var inner1 = document.getElementById("inner1");
+        inner1.innerHTML = "<p><span>버튼클릭시 문자방식으로 엘리먼트를 추가</span></p>"
+      }
+
+      var btn2 = document.getElementById("btn2");
+      btn2.onclick = function () {
+        var inner2 = document.querySelectorAll("#inner2 ul li");//id는 #으로 불러온다
+        // console.log(arr);//노드 list형태로 불러온다
+        for (var i = 0; i < inner2.length; i++) {
+          inner2[i].innerHTML = "이렇게 추가한다!";
+        }
+      }
+
+      /* 완전한 태그의 형태 넣어주기 */
+      var btn3 = document.getElementById("btn3");
+      var str = "";//전역변수로 생성 > 여기에 checkbox를 쌓은 뒤 한번에 추가
+
+
+      btn3.onclick = function () {
+        var inner3 = document.getElementById("inner3");
+
+        for (var i = 1; i <= 10; i++) {
+          // inner3.innerHTML = "<input type='checkbox' name='add'>";
+          //>그냥 문자열을 안에다 집어넣겟다는 형식이라서 
+          //>기존에 있던 문자열이 덮어 띄워 질 뿐이다
+          str += "<input type='checkbox' name='add'>";//누적
+        }
+        inner3.innerHTML = str;//담아놓은 checkbox를 한번에 추가
+      }
+
+    </script>
+
+  </body>
+
+</html>

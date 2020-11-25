@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <form id="form">
+      좌석:
+      <input type="checkbox" name="seat" value="1">1
+      <input type="checkbox" name="seat" value="2">2
+      <input type="checkbox" name="seat" value="3">3
+      <input type="checkbox" name="seat" value="4">4
+      <input type="checkbox" name="seat" value="5">5
+      <input type="checkbox" name="seat" value="6">6
+      <input type="checkbox" name="seat" value="7">7
+      <input type="checkbox" name="seat" value="8">8
+      <br />
+      <button type="button" id="button">예약</button>
+    </form>
+
+    <script>
+      //예약 버튼을 눌렀을 때 좌석이 최소 한개이상 체크되어 있지 않다면, 경고창을 띄워주는 코드를 작성
+      //또는 체크된 값은 JSON형태의 배열로 포장해주세요
+      // var form = document.getElementById("form");
+      var button = document.getElementById("button");
+
+      //count용
+      button.onclick = function () {
+        var seat = document.getElementsByName("seat");
+        var bool = true;//boolean변수를 이용하기
+
+        for (var i = 0; i < seat.length; i++) {
+          var count = {};
+          if (seat[i].checked === bool) {
+            count += { "seat": seat[i].value };
+            console.log(count);
+
+          } else {//>한번싹 흝고 지나가야 하니까 전부 체크가 아닌 이상 무조껀 나오는구나
+            alert('좌석이 선택되지 않았습니다');
+            return;
+          }
+        }
+
+        //for문을 다 돌고 나왔는데 bool변수가 true라면 체크가 하나도 안된경우
+
+      }
+
+    </script>
+
+
+  </body>
+
+</html>

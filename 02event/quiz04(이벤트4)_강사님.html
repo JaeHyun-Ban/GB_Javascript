@@ -17,30 +17,28 @@
      -->
     <!-- 인라인 이벤트를 써서 하나의 함수에서 처리하기 -->
     <h2>자바스크립트 카운트다운</h2>
-    <input type="text" value="0" id="count">
-    <button id="plus" onclick="count(this)">+</button>
-    <button id="minus" onclick="count(this)">-</button>
+    <input type="text" value="0" id="result">
+    <button onclick="calc(this)">+</button>
+    <button onclick="calc(this)">-</button>
 
     <script>
-      function count(a) {
-        var count = document.getElementById("count");
+      function calc(oper) {
+        var result = document.getElementById("result");
 
-        var check = a.innerHTML;
+        console.log(oper);
+        //innerHTML로 +, -를 비교했다
+        if (oper.innerHTML === "+") {
+          result.value++;
 
-
-        console.log(a.innerHTML);
-
-        if (check === "+") {
-          count.value = (parseInt(count.value) + 1);
-
-        } else if (check === "-") {
-          if (count.value <= 0) {
+        } else {
+          if (result.value <= 0) {
+            alert("0보다 작을 수 없습니다");
             return;
-          } else {
-            count.value = (parseInt(count.value) - 1);
           }
-
+          result.value--;
         }
+
+
 
 
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <form>
+      좌석:
+      <input type="checkbox" name="seat" value="1">1
+      <input type="checkbox" name="seat" value="2">2
+      <input type="checkbox" name="seat" value="3">3
+      <input type="checkbox" name="seat" value="4">4
+      <input type="checkbox" name="seat" value="5">5
+      <input type="checkbox" name="seat" value="6">6
+      <input type="checkbox" name="seat" value="7">7
+      <input type="checkbox" name="seat" value="8">8
+      <br />
+      <button type="button" id="btn">예약</button>
+    </form>
+
+    <script>
+      //예약 버튼을 눌렀을 때 좌석이 최소 한개이상 체크되어 있지 않다면, 경고창을 띄워주는 코드를 작성
+      //또는 체크된 값은 JSON형태의 배열로 포장해주세요
+      // var form = document.getElementById("form");
+      var button = document.getElementById("btn");
+
+      //count용
+      btn.onclick = function () {
+
+        var seat = document.querySelectorAll("input[name='seat']");//input태그의 name속성이 seat인 것
+        //>css를 이용시 정확하게 사용할 것
+        var bool = true;
+        var arr = new Array();//★JSON형식으로 담아 줄 배열 생성
+
+        for (var i = 0; i < seat.length; i++) {
+          if (seat[i].checked) {
+            arr.push(seat[i].value);//★
+            bool = false;
+          }
+        }
+
+        //for문을 다 돌고 나왔을 때 bool변수 true라면, 체크가 하나도 안된경우
+        if (bool) {
+          alert("좌석체크는 필수 입니다");
+          return;
+        } else {
+          //key = date 에 arr을 담아줌
+          var data = JSON.stringify({ date: arr });
+          console.log(data);
+
+        }
+
+        console.log(arr);
+      }
+
+    </script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      input {
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- 아이디나, 비밀번호가 변경 될 때, 예제 처럼 처리되도록 구현하세요
+    1. 아이디 4글자 이상 
+    - 아니라면 span >> 아이디는 4글자 이상이에요! 문구 + input border생상 빨간색
+    2. 비밀번호 9글자 이상
+    - X >> 위와 동일
+
+    ++ change, keyup이벤트를 활용해보기
+  -->
+    <div>
+      <form>
+        아이디:<input type="text" name="id"><br />
+        <span class="idMsg"></span><br />
+        비밀번호:<input type="text" name="pw"><br />
+        <span class="pwMsg"></span><br />
+      </form>
+    </div>
+
+    <script>
+
+      var id = document.querySelector("input[name='id']");
+      var pw = document.querySelector("input[name='pw']");
+      console.log(id);
+      console.log(id.value.length);
+
+
+      // addEventListner 처리법
+      // id.addEventListener("keyup", function(){
+      // })
+
+      /* change = 변경시, keyup = 키가 떼졌을때 */
+      /* 아이디 이벤트 처리 */
+      id.onkeyup = function () {
+        var idmsg = document.querySelector(".idMsg");
+
+        if (id.value.length < 4) {
+          idmsg.innerHTML = "아이디는 4글자 이상입니다";
+          id.style.borderColor = "red";
+        } else {
+          idmsg.innerHTML = "";
+          id.style.borderColor = "black";
+        }
+      }
+      /* 비밀번호 이벤트 처리 */
+      pw.onchange = function () {
+        var pwmsg = document.querySelector(".pwMsg");
+
+        if (pw.value.length < 9) {
+          //함수형은 `.`을 찍는걸 좋아한다
+          // document.querySelector(".pwMsg").innerHTML = "비밀번호는 9글자 이상입니다";//이렇게 작성 가능
+          pwmsg.innerHTML = "비밀번호는 9글자 이상입니다";
+          pw.style.borderColor = "green";
+        } else {
+          pwmsg.value = "";
+          pw.style.borderColor = "black";
+        }
+
+
+
+      }
+
+
+    </script>
+
+
+
+
+  </body>
+
+</html>
