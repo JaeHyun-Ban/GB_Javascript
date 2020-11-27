@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      table {
+        border-spacing: 0px;
+        border-collapse: collapse;
+      }
+
+      thead th {
+        border: 1px solid black;
+      }
+
+      tbody td {
+        border: 1px solid #777;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h2>이벤트 속성을 이용해 다음을 만들어보세요. 다만들었다면 위임방식으로 변경하세요</h2>
+
+    <table>
+      <thead>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>삭제</th>
+      </thead>
+      <tbody class="result">
+        <tr class="list">
+          <td>1</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="btn">삭제</button></td>
+        </tr>
+        <tr class="list">
+          <td>2</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="btn">삭제</button></td>
+        </tr>
+        <tr class="list">
+          <td>3</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="btn">삭제</button></td>
+        </tr>
+        <tr class="list">
+          <td>4</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="btn">삭제</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      /* 삭제 버튼 클릭 시 해당 열 통째로 삭제 */
+      /* 1번 - for */
+      // var btn = document.querySelector(".btn");
+      // var list = document.querySelectorAll("tbody tr");
+      // console.log(list);
+
+      // for (var i = 0; i < list.length; i++) {
+      //   list[i].addEventListener("click", del);
+      // }
+
+      // function del(e) {
+      //   console.log(e.currentTarget);
+      //   e.currentTarget.remove();
+      // }
+
+      /* 2번 이벤트 위임 */
+      // var list = document.querySelectorAll("tbody tr");
+      var result = document.querySelector(".result");
+      var btn = document.querySelector(".btn");
+      // console.log(result);
+
+      result.onclick = function (event) {
+        // console.log(event);
+        console.log(event.target);
+        console.log(event.target.parentElement.parentElement);
+
+        if (event.target.tagName !== 'BUTTON'); return;
+        var parent = event.target.parentElement.parentElement;
+        parent.remove();
+      }
+
+
+
+    </script>
+
+
+
+  </body>
+
+</html>

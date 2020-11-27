@@ -31,29 +31,56 @@
       -->
     <script>
       window.onload = function () {
-        var body = document.getElementById("body");
+        //1개 추가하기
+        var addList = document.getElementById("addList");
+        addList.addEventListener("click", createList);//이벤트 등록
 
-        var tr = document.createElement("tr");//tr태그 생성
-        var td = document.createElement("td");//td태그 생성
-        // var input = document.createElement("input");//input태그 생성
-
-        var btn5 = document.getElementById("btn5");
-        var str = "";
-        for (var i = 1; i <= 4; i++) {
-          td.innerHTML = "<input type='text' size='3'>";
-          tr.appendChild(td);
-          console.log(tr);
+        function createList() {
+          var tr = document.createElement("tr");//가장 바깥 = 반복분 밖에
+          // var input = document.createElement("input");
+          // input.type = "text";
+          // input.size = 3;
+          // var td = document.createElement("td");
+          // td.appendChild(input);
+          // tr.appendChild(td);
+          for (var i = 1; i <= 4; i++) {
+            if (i === 1) {
+              var str = "<input type='text' size='3'>";
+            } else if (i === 3) {
+              var str = "<input type='text' size='5'>";
+            } else {
+              var str = "<input type='text'>";
+            }
+            var td = document.createElement("td");
+            td.innerHTML = str;
+            tr.appendChild(td);//계속 더해줌
+          }
+          document.getElementById("body").appendChild(tr);
         }
-        console.log(str);
+
         //5개 추가하기
-        btn5.onclick = function () {
+        var addList5 = document.getElementById("addList5");
+        addList5.addEventListener("click", createList5);
 
-          body.appendChild(tr);
-          console.log(body);
-
+        function createList5() {
+          for (var j = 1; j < 6; j++) {//5번 실행
+            var tr = document.createElement("tr");//생성
+            for (var i = 1; i < 5; i++) {
+              var td = document.createElement("td");//생성
+              var str = "";
+              if (i === 1) {
+                str = "<input type='text' size='3'>";
+              } else if (i === 3) {
+                str = "<input type='text' size='5'>";
+              } else {
+                str = "<input type='text'>";
+              }
+              td.innerHTML = str;
+              tr.appendChild(td);//다 쌓음
+            }
+            document.getElementById("body").appendChild(tr);
+          }
         }
-
-
 
 
       }
@@ -79,8 +106,8 @@
         </tr>
       </tbody>
     </table>
-    <button type="button" id="btn5">5개추가하기</button>
-    <button type="button" id="btn1">1개추가하기</button>
+    <button type="button" id="addList">1개추가하기</button>
+    <button type="button" id="addList5">5개추가하기</button>
 
 
 

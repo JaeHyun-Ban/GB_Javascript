@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 이벤트 객체를 다룰줄 아느냐가 아주 중요한 요소이다(어려움) -->
+    <!-- 여태까지는 항상 값을 변경한 다음에 버튼을 클릭하는 방식으로 사용했다 -->
+    <!-- 동일한 형태의 여러 태그에 대해서 그 즉시 반영시키는 이벤트를 주려면 어떻게 할까요? -->
+
+    <!-- 이것의 양이 1000개 이상으로 많아진다면 어떻게 할 것인가...? -->
+    <ul>
+      <li class="list">홍길동</li>
+      <li class="list">이순신</li>
+      <li class="list">홍길자</li>
+      <li class="list">김길자</li>
+      <li class="list">고길동</li>
+    </ul>
+
+    <div class="result"></div>
+
+    <script>
+      var result = document.querySelector(".result");
+      var list = document.querySelectorAll(".list");
+      // list[0].onclick....
+      // list[1].onclick....
+      // console.log(list);
+      /* ----------------------------------------------------------------------- */
+      //이벤트가 발생될 때 이벤트에 관한 정보를 함수의 매개변수로 자동으로 넣어준다
+      //매개변수를 통해서 참조하거나, 직접 event로 적어서 사용할 수 있다
+      // list[0].onclick = function () {
+      //   console.log(event);//발생하는 이벤트를 함수로 만들어서 사용할 수 있다
+      //   //그 중 `target`이라는 정보가 제일 중요하다
+      //   console.log(event.target);//현재 이벤트가 동장되는 대상을 얻어올 수 있다
+      //   result.innerHTML = event.target.innerHTML;
+      // }
+
+      /* ----------------------------------------------------------------------- */
+      /* 효율성이 좋지 못한 코드 */
+      /* 모든 항목에 반복문으로 이벤트를 걸어주는 처리를 하면 되는데 */
+      /* 하지만, li가 1000개라면? 이벤트 객체도 1000개가 생성된다는 뜻이다 */
+      for (var i = 0; i < list.length; i++) {
+        list[i].onclick = function () {
+          // console.log(i);//i값을 0~5가아닌 무조껀 5를 가진다
+          // result.innerHTML = this.innerHTML;//> X
+          result.innerHTML = event.target.innerHTML;
+        }
+      }
+
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .parent {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+      }
+
+      .child1 {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+      }
+
+      .child2 {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+    </style>
+
+
+  </head>
+
+  <body>
+
+    <h2>버블링 vs 캡쳐링</h2>
+
+    <div class="parent">
+      <div class="child1">
+        <div class="child2">child(자식)</div>
+      </div>
+    </div>
+
+    <script>
+      /* DOM의 이벤트 동작방식의 기본은 버블링(자식 -> 부모로 타고 올라감)이다 */
+      /* 이벤트 버블링: 부모,자식 이벤트 순서가 자식에서 부모로 전파되어 올라가는 특성(아래 -> 위) */
+      var parent = document.querySelector(".parent")//부모
+      var child1 = document.querySelector(".child1")//자식1
+      var child2 = document.querySelector(".child2")//자식2
+
+      /* 부모안의 모든 자식들이 함게 작동한다 */
+      // parent.onclick = function () {
+      //   console.log("parent(부모 실행");
+      // }
+      // child1.onclick = function () {
+      //   // event.stopPropagation();//이벤트의 버블링을 막는다 > 추천 X(전파하는걸 막아서 좋을 게 없음)
+      //   //>쓸일이 거의 없음
+      //   console.log("child1(자식1 실행)");
+      // }
+      // /* 자식들은 실행되며 부모한테 올라가는 동안 모든것을 작동시키며 이동한다 */
+      // child2.onclick = function () {
+      //   console.log("child2(자식2 실행)")
+      // }
+
+
+      /* 이벤트 캡쳐링 -> 부모, 자식 이벤트 순서가(부모 -> 자식)로 전파되어 가는 특성 */
+      /* 캡쳐링으로 이벤트를 바꾸면, 동작방식이 반대로 바뀐다(위 -> 아래) */
+      /* addEventListener()방식으로만 만들어 줄 수 있다. */
+
+      /* 이벤트핸들러에 세번째 매개변수에 true로 쓰면 캡처링으로 전환된다 (실제 구현할일 x) */
+      parent.addEventListener("click", function () {
+        console.log("parent(부모실행)");
+      }, true)
+      child1.addEventListener("click", function () {
+        event.stopPropagation();
+        console.log("child1(자식1실행)")
+      }, true);
+      child2.addEventListener("click", function () {
+        console.log("child2(자식2실행)");
+      }, true);
+
+    </script>
+
+
+
+  </body>
+
+</html>

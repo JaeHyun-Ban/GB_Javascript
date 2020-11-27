@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+      .list {
+        margin: 0 50px;
+      }
+
+      .list img {
+        height: 100px;
+        width: 150px;
+      }
+
+      .result .picture {
+        width: 500px;
+        height: 300px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>이벤트 속성을 이용해서 다음을 만들어 보세요. 다 만들었다면 위임방식으로 변경하세요</h2>
+    <!-- 
+      1. for문으로 작성
+      2. 위임방식으로 생성
+     -->
+    <div class="list">
+      <img src="img/1.jpg" alt="" class="photo">
+      <img src="img/2.jpg" alt="" class="photo">
+      <img src="img/3.jpg" alt="" class="photo">
+      <img src="img/4.jpg" alt="" class="photo">
+    </div>
+    <div class="result">
+      <p>결과</p>
+      <img src="" alt="aaa" class="picture">
+    </div>
+
+    <script>
+      // var photo = document.querySelectorAll(".photo");
+      // var picture = document.querySelector(".result > .picture");
+      // console.log(photo);
+      // console.log(photo[0]);
+      // console.log(picture);
+      // /* 1번 */
+      // for (var i = 0; i < photo.length; i++) {
+      //   photo[i].onclick = function () {
+      //     // console.log(i);//>4만찍힘
+      //     picture.src = event.target.src;
+      //   }
+      // }
+
+      /* 2번 */
+      var list = document.querySelector(".list");
+      var picture = document.querySelector(".picture");
+      console.log(list);
+
+      list.onclick = function () {
+        console.log(event.currentTarget);
+        console.dir(event.target);
+
+        //부모태그 클릭 시 에러 방지 = IMG태그 아니면 전부 리턴
+        if (event.target.tagName !== "IMG") return;
+
+        picture.src = event.target.src;
+        console.log(event.target.src);
+
+      }
+
+    </script>
+
+
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>아직 삭제는 구현하지 마세요</h2>
+    <h2>할일 목록 만들기</h2>
+
+    <form class="nameForm">
+      <h3 class="nameTitle"></h3><!-- 숨겨놓을 영역 -->
+      <input type="text" placeholder="이름을 임력하세요">
+      <button type="button" id="btn1">확인</button>
+    </form>
+
+    <form class="todoForm">
+      <input type="text" placeholder="당신의 할일을 적으세요">
+      <button type="button" id="btn2">확인</button>
+    </form>
+
+    <ul class="todoList"></ul>
+
+    <script>
+      var nameForm = document.querySelector(".nameForm");
+      var btn1 = document.getElementById("btn1");
+      //이름입력
+      btn1.onclick = function () {
+        var input = document.querySelector(".nameForm > input");
+        var nameTitle = document.querySelector(".nameTitle");
+
+        console.log(nameForm);
+        nameTitle.innerHTML = input.value + "님 어서오세요";
+
+        nameForm.removeChild(input);
+        nameForm.removeChild(btn1);
+      }
+
+      //할일 작성
+      var todoForm = document.querySelector(".todoForm");
+      var btn2 = document.getElementById("btn2");
+      var ul = document.createElement("ul");
+      var delbtn = "";
+      btn2.addEventListener("click", addTodo);
+      function addTodo() {
+        var input = document.querySelector(".todoForm input");
+        var button = document.createElement("button");
+        button.innerHTML = "X";
+
+        var li = document.createElement("li");
+
+        li.append(input.value);
+        li.appendChild(button);
+        console.log(li);
+        ul.appendChild(li);
+        todoForm.appendChild(ul);
+
+        delbtn = document.getElementById("delbtn")
+      }
+
+      //할일 삭제버튼 - delbtn
+      delbtn.onclick = function () {
+        console.log(delbtn);
+        ul.removeChild(li);
+
+      }
+
+
+
+    </script>
+
+
+  </body>
+
+</html>

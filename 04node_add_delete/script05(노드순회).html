@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      table {
+        /* border사이간견 */
+        border-spacing: 0;
+        /* 겹치는 곳에 대한 처리 */
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <table>
+      <thead>
+        <th>이동</th>
+        <th>번호</th>
+        <th>이름</th>
+        <th>내용</th>
+        <th>날짜</th>
+      </thead>
+      <tbody class="table">
+        <tr>
+          <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button>
+          </td>
+          <td>1</td>
+          <td>홍길동</td>
+          <td>hello world</td>
+          <td>2020-01-01</td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button>
+          </td>
+          <td>2</td>
+          <td>이순신</td>
+          <td>반가워요!</td>
+          <td>2020-02-02</td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button>
+          </td>
+          <td>3</td>
+          <td>박찬순</td>
+          <td>어서와요!</td>
+          <td>2020-03-03</td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button>
+          </td>
+          <td>4</td>
+          <td>김영희</td>
+          <td>아닛?</td>
+          <td>2020-04-04</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 
+      이번 내용은 커다란 박스(문)으로 생각해서 이해를 하니 잘 되었다 잊지말자 
+
+      이전, 다음노드의 기준이 누구냐에 따라 조금씩 바뀔 것이다
+    
+    -->
+    <script>
+      //
+      function down(node) {
+        //this를 통해 버튼을 그대로 받는다
+        // console.log(node);
+        // console.dir(node);//적용시킬수 있는 속성을 보여줌
+        // console.log(node.parentElement); //부모노드
+        // console.log(node.parentNode); //부모노드
+
+        // console.log(node.nextElementSibling);//다음 형제 노드
+        // console.log(node.nextSibling);//↑가 다음 이웃
+
+        // console.log(node.previousElementSibling);//이전 형제 노드
+        // console.log(node.previousSibling);
+
+        // console.log(node.firstChild);//첫번째 자식노드
+        // console.log(node.firstElementChild);//????
+
+        //childnode = 공백포함
+        //childrenNode = 공백제거한 노드
+
+        /* 
+         부모, 이웃노드를 선택하는 방법이 2가지 씩 있는데
+         이름에 Element에 포함된 속성은 text나 공백을 제외하고 선택해준다
+         그래서 Element이름이 붙어있는 속성을 사용해주면 된다.
+        */
+        var table = document.querySelector(".table");
+        console.log(table);
+        // console.log(node.parentElement.parentElement);
+        var current = node.parentElement.parentElement;//tr - 기준노드 > 이거의 다음 형제노드로 이동
+        var next = current.nextElementSibling;//현재 기준: tr 의 `다음 `행
+
+        if (next === null) {
+          alert("다음 행이 존재하지 않습니다");
+          return;//다음행이 없으면 함수 종료
+        }
+
+        table.insertBefore(next, current);//(신규노드, 기준노드)기준 앞에 추가
+      }
+
+      function up(node) {//insertBefore()를 이용해서 업버튼도 처리해보기
+        var table = document.querySelector(".table");
+        var current = node.parentElement.parentElement;//tr로 이동
+        var prev = current.previousElementSibling;//이전노드
+        console.log(prev);
+
+        if (prev === null) {
+          alert("이전 행이 존재하지 않습니다");
+          return;
+        }
+
+        table.insertBefore(current, prev);
+      }
+
+
+    </script>
+
+
+  </body>
+
+</html>

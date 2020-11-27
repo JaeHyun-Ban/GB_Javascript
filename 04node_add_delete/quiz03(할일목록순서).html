@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>아직 삭제는 구현하지 마세요</h2>
+    <h2>할일 목록 만들기</h2>
+
+    <form class="nameForm">
+      <h3 class="nameTitle"></h3><!-- 숨겨놓을 영역 -->
+      <input type="text" placeholder="이름을 임력하세요">
+      <button type="button" id="btn1">확인</button>
+    </form>
+
+    <form class="todoForm">
+      <input type="text" placeholder="당신의 할일을 적으세요">
+      <button type="button" id="btn2">확인</button>
+    </form>
+
+    <ul class="todoList"></ul>
+
+    <script>
+      var nameForm = document.querySelector(".nameForm");
+      var nameInput = nameForm.querySelector("input");//nameForm에서 뽑아오기
+      var nameButton = nameForm.querySelector("button");
+      var nameTitle = nameForm.querySelector("h3");
+
+      nameButton.addEventListener("click", regist);
+      function regist() {
+        nameTitle.innerHTML = nameInput.value + "님 안녕하세요";
+        nameButton.style.display = "none";//display속성을 이용해 사라지게 하기
+        nameInput.style.display = "none";
+
+      }
+
+      /* ----------------------------------------------------------------- */
+      var todoForm = document.querySelector(".todoForm");
+      var todoInput = todoForm.querySelector("input");
+      var todoButton = todoForm.querySelector("button");
+
+      todoButton.addEventListener("click", handleTodo);
+      function handleTodo() {
+        createTodo(todoInput.value);//엘리먼트 생성메서드에 input의 value값을 전달
+        todoInput.value = "";//input값 초기화
+        console.log(todoInput.value);
+      }
+
+      function createTodo(text) {//text = input.value
+        var ul = document.querySelector(".todoList");
+
+        //버튼 생성
+        var btn = document.createElement("button");
+        btn.innerHTML = "X";
+        btn.addEventListener("click", deleteTodo);//할일 삭제 함수(이벤트 등록)
+        //위아래 버튼
+        var up = "<button type='button' onabort='up(this)'>↑</button>";
+        // var up = document.createElement("button");
+        // up.onclick = "up(this)";
+        // console.log(up);
+        // up.innerHTML = "↑";
+
+        var down = document.createElement("button");
+        down.innerHTML = "↓";
+
+        //li생성
+        var li = document.createElement("li");
+        li.innerHTML = text;
+        //li에 버튼추가
+        li.appendChild(btn);
+        li.innerHTML += up;
+        // li.appendChild(up);
+        li.appendChild(down);
+        //ul에 li추가
+        ul.appendChild(li);
+        console.log(ul);
+      }
+
+      //up
+      function up(node) {
+        var current = node.parentElement.parentElement;//현재 node의 ul로 이동(기준)
+        var prev = current.previousElementSibling;
+        console.log(prev);
+        // current.
+      }
+
+
+
+      //삭제는 이렇게 진행되는구나?? 그래 생성된 곳 안에서해야 값이 남는데 우왕
+      function deleteTodo() {
+        console.log(this.parentElement);//this의 사용법
+        //>부모를 확인 > li >>삭제 진행
+        this.parentElement.remove();
+      }
+
+
+
+
+    </script>
+
+
+  </body>
+
+</html>

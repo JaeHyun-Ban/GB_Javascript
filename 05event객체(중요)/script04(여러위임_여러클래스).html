@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>이벤트 위임방식에서 여러버튼에 대해 클래스 속성을 활용하는 방법 classList</h2>
+    <!-- section은 id를 부여 -->
+    <section id="section">
+      <!-- 이곳은 모든 버튼을 통제할수 있는 부모 위치 -->
+      <div class="list">
+        <!-- 선택, 삭제는 다른 기능이여야 한다 -->
+        <div>
+          <span>홍길동</span>
+          <!-- class는 띄어쓰기로 여러 이름을 가질 수 있다 -->
+          <button type="button" class="btn sel">선택</button>
+          <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+          <span>이순신</span>
+          <button type="button" class="btn sel">선택</button>
+          <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+          <span>홍길자</span>
+          <button type="button" class="btn sel">선택</button>
+          <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+          <span>김영희</span>
+          <button type="button" class="btn sel">선택</button>
+          <button type="button" class="btn del">삭제</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      var section = document.getElementById("section");
+      var list = section.querySelector(".list");
+      // console.log(list);
+      list.onclick = function () {
+        // console.log(event.target);
+        // console.log(event.target.className);
+        // console.dir(event.target);//classList발견!
+        console.log(event.target.classList);//여러 클래스의 값 확인
+        console.dir(event.target.classList);//conTains()발견 -> 포함=true or false
+
+        if (event.target.tagName !== "BUTTON"); return;//버튼태그가 아니면 종료
+        if (event.target.classList.contains("sel")) {
+          console.log("셀렉트 버튼이 존재하는구만");
+
+        } else if (event.target.classList.contains("del")) {
+          console.log("딜리트 버튼이 존재하는 구먼");
+        }
+
+      }
+    </script>
+
+  </body>
+
+</html>

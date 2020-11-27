@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      table {
+        border-spacing: 0px;
+        border-collapse: collapse;
+      }
+
+      thead th {
+        border: 1px solid black;
+      }
+
+      tbody td {
+        border: 1px solid #777;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <h2>이벤트 속성을 이용해 다음을 만들어보세요. 다만들었다면 위임방식으로 변경하세요</h2>
+
+    <table>
+      <thead>
+        <th>번호</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>삭제</th>
+      </thead>
+      <tbody class="table">
+        <tr class="list">
+          <td>1</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="check">삭제</button></td>
+        </tr>
+        <tr class="list">
+          <td>2</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="check">삭제</button></td>
+        </tr>
+        <tr class="list">
+          <td>3</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="check">삭제</button></td>
+        </tr>
+        <tr class="list">
+          <td>4</td>
+          <td>첫글</td>
+          <td>hi</td>
+          <td><button type="button" class="check">삭제</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      /* 1번 */
+      // var list = document.querySelectorAll(".check");
+      // for (var i = 0; i < list.length; i++) {
+      //   list[i].onclick = function () {
+      //     event.target.parentElement.parentElement.remove();
+      //   }
+      // }
+
+      /* 2번 - 이벤트 위임*/
+      var table = document.querySelector(".table");
+      // console.log(table);
+      table.onclick = function () {
+        console.log(event.target);
+        console.dir(event.target);
+        if (event.target.tagName !== "BUTTON") return;
+        console.log(event.target.tagName);
+
+        event.target.parentElement.parentElement.remove();
+      }
+
+
+
+    </script>
+
+
+
+  </body>
+
+</html>

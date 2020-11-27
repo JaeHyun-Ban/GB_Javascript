@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <style>
+    #table {
+      border-spacing: 0;
+      border-collapse: separate;
+      width: 100%;
+    }
+
+    thead th,
+    tbody td {
+      border: 1px solid #777;
+    }
+  </style>
+
+  <body>
+
+    <table id="table">
+      <thead>
+        <th>번호</th>
+        <th>과정명</th>
+        <th>담당교수</th>
+        <th>관리</th>
+      </thead>
+      <tbody class="list">
+        <tr>
+          <td>1</td>
+          <td>강남응용자바</td>
+          <td>홍길동</td>
+          <td>
+            <button type="button" class="btn-primary testInfo">시험기본정보</button>
+            <button type="button" class="btn-danger testInput">시험출제</button>
+            <button type="button" class="btn-default testResult">시험결과</button>
+            <button type="button" class="btn-info scoreInfo">성적관리</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>종로응용자바</td>
+          <td>홍길동</td>
+          <td>
+            <button type="button" class="btn-primary testInfo">시험기본정보</button>
+            <button type="button" class="btn-danger testInput">시험출제</button>
+            <button type="button" class="btn-default testResult">시험결과</button>
+            <button type="button" class="btn-info scoreInfo">성적관리</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <script>
+      /* 모든 버튼을 컨트롤 가능한 부모위치 설정 = table태그 */
+      var list = document.querySelector(".list");
+      list.onclick = function () {
+        // console.log(event.target);
+        // console.log(event.target.classList);//class정보를 List로 분리시켜서 생성
+        /* 버튼 아니면 거르기 */
+        if (event.target.tagName !== "BUTTON") return;
+        var classList = event.target.classList;//이러면 편했네^^;
+        /* class이름정보로 판단 */
+        if (event.target.classList.contains("testInfo")) {
+          console.log(event.target);
+          console.log("시험 기본 정보...");
+        } else if (event.target.classList.contains("testInput")) {
+          console.log(event.target);
+          console.log("시험출제...");
+        } else if (event.target.classList.contains("testResult")) {
+          console.log(event.target);
+          console.log("시험 결과");
+        } else if (event.target.classList.contains("scoreInfo")) {
+          console.log(event.target);
+          console.log("성적관리...");
+
+        }
+
+      }
+
+    </script>
+
+
+
+  </body>
+
+</html>
