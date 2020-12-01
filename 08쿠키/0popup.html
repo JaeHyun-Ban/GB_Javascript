@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 팝업창 js 참조 -->
+    <script src="0popup.js"></script>
+
+  </head>
+
+  <body>
+    <h2>메인 팝업화면</h2>
+
+    <div>무언가 내용을 작성</div>
+
+    오늘하루 이창 열지 않기<input type="checkbox">
+    <!-- 여기서 쿠키 생성 -->
+
+    <script>
+      var box = document.querySelector("input[type='checkbox']");
+      box.onclick = function () {
+        if (box.checked) {
+          createCookie("mainPop");
+          window.close();
+          //>클릭시 쿠키생성 + 팝업창 종료
+
+
+        }
+      }
+
+
+
+    </script>
+
+
+
+  </body>
+
+</html>

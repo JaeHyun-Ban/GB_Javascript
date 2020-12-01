@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .main-banner1 {
+        background: linear-gradient(90deg, #0c151c 1.3125rem, transparent 1%) 50%, linear-gradient(#0c151c 1.3125rem, transparent 1%) 50%, #263747;
+        background-size: 1.5rem 1.5rem;
+        padding: 6rem 0;
+        color: #fff;
+        text-align: center;
+      }
+
+      .main-banner1 img {
+        display: none;
+        animation: fadein 1s linear;
+      }
+
+      @keyframes fadein {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <!-- 1.엘리먼트 생성 구문으로 처리 or display방식으로 처리 -->
+
+    <div class="main-banner1">
+      <img src="img/1.jpg" width="200px">
+      <img src="img/2.jpg" width="200px">
+      <img src="img/3.jpg" width="200px">
+      <img src="img/4.jpg" width="200px">
+      <img src="img/1.jpg" width="200px">
+      <img src="img/2.jpg" width="200px">
+      <img src="img/3.jpg" width="200px">
+      <img src="img/4.jpg" width="200px">
+      <img src="img/1.jpg" width="200px">
+      <img src="img/2.jpg" width="200px">
+      <img src="img/3.jpg" width="200px">
+      <img src="img/4.jpg" width="200px">
+      <img src="img/1.jpg" width="200px">
+      <img src="img/2.jpg" width="200px">
+      <img src="img/3.jpg" width="200px">
+      <img src="img/4.jpg" width="200px">
+    </div>
+
+    <script>
+      var main = document.querySelector(".main-banner1");
+      var img = main.querySelectorAll("img");
+
+      var index = 0;
+      function displayImg() {
+        img[++index].style.display = "inline";
+
+        if (index === img.length - 1) {
+          index = 0;
+          // main.innerHTML = "";//지워버리니까 안되는구나
+          //>근데 이것도 다른용도로는 꽤나 유용해보인다
+        }
+      }
+
+      setInterval(displayImg, 300);
+
+
+
+    </script>
+
+
+  </body>
+
+</html>

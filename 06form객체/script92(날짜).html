@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>날짜 객체 사용하기</h2>
+
+    <script>
+      /* JS에서 날짜 계산을 편한게 하려면 밀리초를 이용한다 */
+
+      var before = new Date(1606710422517);//예전 날짜;
+      var date = new Date();/* 오늘 날짜(날짜형식) */
+
+      // console.log(before);
+      // console.log(date);
+      // console.log(date.getTime() - before);
+
+      // console.log(date.getTime());/* 시간을 밀리초로 변경: 날짜를 계산할 때 사용함 */
+      // console.log(date.getFullYear());/* 년 */
+      // console.log(date.getMonth() + 1);//월
+      // console.log(date.getDate());//일
+      // console.log(date.getHours());//시
+      // console.log(date.getMinutes());//분
+      // console.log(date.getSeconds());//초
+
+      //시간차 구하기
+      //1일에 대한 밀리초 -> ★1000★ * 60 * 60 * 24
+      var str;
+      var millis = 1606710422517 - (1000 * 60 * 60) * 24;
+      var gap = date.getTime() - millis;//밀리초 - 밀리초
+      if (gap < 1000 * 60 * 60 * 24) {//1일 이하인 경우
+        if (gap < 1000 * 60 * 60) {//1시간 이하인 경우
+          str = "1시간 전";
+          console.log(str);
+        } else {//1시간 이상
+          str = parseInt(gap / (1000 * 60 * 60)) + "시간 전";//xx시간전
+          console.log(str);
+        }
+      } else {//1일 이상인 경우
+        var now = new Date(millis);//밀리초를 통한 날짜
+        var year = now.getFullYear();//해당 년
+        var month = now.getMonth() + 1;//해당 월
+        var day = now.getDate();//해당 일
+        var hour = now.getHours();//해당 시
+        var minute = now.getMinutes();//해당 분
+        var second = now.getSeconds();//해당 초
+
+        str = year + "년" + month + "월" + day + "일" + hour + ":" + minute + ":" + second;
+        console.log(str);
+
+      }
+
+      /* ex)
+        날짜를 계산하는 곳은?
+        누를 때 마다 화면이 변경된다 > JS에서 처리
+        or 자바, DB에서 처리해 준다
+        -----------------------------------------------
+        JS에서 계산을 된다 => 클라이언트(인터넷창)에서 계산을 하는 것 이기 때문에
+        해킹이나 보안측면에서 좋지않다
+
+        따라서 DB나 JAVA에서 처리하고 나온 결과 값만을 보내주는 것이 좋다
+      */
+    </script>
+
+  </body>
+
+</html>

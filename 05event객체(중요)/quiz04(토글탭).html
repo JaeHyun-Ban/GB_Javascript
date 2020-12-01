@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .tog li {
+        display: inline-block;
+        padding: 10px;
+        border: 1px solid #777;
+        width: 100px;
+        text-align: center;
+      }
+
+      .tog-menu {
+        display: none;
+      }
+
+      .active {
+        display: block;
+        /* 호출할 애니메이션, 지속시간, 옵션(천천히) */
+        animation: myfadein 1s ease-in-out;
+      }
+
+      /* 에니메이션 */
+      @keyframes myfadein {
+
+        /* 출발 */
+        from {
+          opacity: 0;
+        }
+
+        /* 끝 */
+        to {
+          opacity: 1;
+          /* 부가적인 기능들을 사용할 수 있다 */
+          color: red;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+
+      <ul class="tog">
+        <!-- data-id: #id이름 으로 찾아간다 -->
+        <li data-id="#tog1">메뉴1</li>
+        <li data-id="#tog2">메뉴2</li>
+        <li data-id="#tog3">메뉴3</li>
+      </ul>
+
+      <!-- 메뉴에 따라서보여줄 영역 -->
+      <div>
+        <div class="tog-menu active" id="tog1">토글메뉴1</div>
+        <div class="tog-menu" id="tog2">토글메뉴2</div>
+        <div class="tog-menu" id="tog3">토글메뉴3</div>
+      </div>
+
+    </section>
+
+    <script>
+      /*
+        이벤트 위임방식을 이용해서 이벤트를 처리합니다
+        data-id값을 얻어서 각 아이디에 적합한 태그 class이름에 active를 추가해줍니다.
+        나머지 tog-menu의 active는 지워준다
+      */
+      var tog = document.querySelector(".tog");
+      tog.onclick = function () {
+        /* LI아니면 막아주기 */
+        if (event.target.tagName !== "LI") return;
+
+        /* active가 포함된 태그에서 active를 전부 삭제 */
+        var togList = document.querySelectorAll(".tog-menu");
+
+        for (var i = 0; i < togList.length; i++) {
+          // console.dir(togList[i].classList);
+          /* 클래스 중 active를 포함한다면 */
+          if (togList[i].classList.contains("active")) {
+            /* i번째 클래스리스트에 active를 삭제 */
+            togList[i].classList.remove("active");
+          }
+        }
+        var target = event.target.dataset.id;
+        /* querySelector에 id를 찾을 때 #이들어가니까 미리 #을 넣어 작성한 거구나!!!!! */
+        document.querySelector(target).classList.add("active");
+      }
+
+    </script>
+
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>form객체는 document의 하위 객체중 하나로 유일하게 name속성만으로 접근이 가능하다</h2>
+
+    <!-- document.regForm으로 접근 가능하다 -->
+    <form name="regForm">
+      아이디: <input type="text" name="id"><br />
+      비밀번호: <input type="text" name="pw"><br />
+
+      번호:
+      <select name="phone" id="">
+        <option>선택</option>
+        <option>010</option>
+      </select>
+      <br />
+
+      분야:
+      <input type="checkbox" name="inter">JAVA
+      <input type="checkbox" name="inter">JSP
+      <input type="checkbox" name="inter">JS
+      <br />
+
+      <!-- type="button"이 빠지면 submit으로 실행된다 -->
+      <button type="submit" onclick="check()">등록</button>
+
+    </form>
+
+    <script>
+      //1. 방법
+      // console.log(document.querySelector("form[name='regForm']"));/* 속성선택자 */
+      //2. document.폼네임
+      // console.log(document.regForm);
+
+      function check() {
+        if (document.regForm.id.value.length < 4) {
+          alert("아이디는 4글자 이상입니다");
+          document.regForm.id.focus();//위치에 포커싱
+          return;//★코드에 조건을 만족하지 않을 때 return으로 함수 종료★
+        } else if (document.regForm.phone.value === '선택') {
+          alert('번호를 확인해주세요');
+          document.regForm.phone.focus();
+          return;
+
+        } else {
+          var inter = document.getElementById("inter");
+          // console.log(inter);
+          var bool = true;//체크확인용
+          for (var i = 0; i < inter.length; i++) {
+            if (inter[i].checked) {
+              bool = false;//체크가 되어있다면 false
+              break;
+            }
+          }
+
+          if (bool) {
+            alert('한개 이상 분야를 선택하셔야 합니다');
+            return;
+          }
+        }
+
+        /* return이 없다면 실행되는 코드 */
+        // alert('1');
+
+        //submit()폼태그를 서브밋
+        document.regForm.submit();
+      }
+
+    </script>
+
+
+
+
+  </body>
+
+</html>

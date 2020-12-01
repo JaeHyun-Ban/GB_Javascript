@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <button type="button" id="btn">새창열기</button>
+    <!-- 옜날 방식 -->
+    <!-- <button type="button" id="btn" onclick="javascript:window.open('pop.html')"></button>>새창열기</button> -->
+
+    <script>
+      //window.open("문서주소", "이름", "옵션=값, 옵션=값, ....")
+      var btn = document.getElementById("btn");
+      btn.onclick = function () {
+
+
+        // window.open("https://www.naver.com");
+        window.open("pop.html", "팝업창", "width=500px, height=500px, left=100px, top=100px")
+        /* left, top = 나타날 위치 지정(팝업창이 여러개일 때 순서대로 보이게 조절용) */
+
+        // window.close();//현재 문서를을 닫는다
+
+      }
+    </script>
+
+
+  </body>
+
+</html>
