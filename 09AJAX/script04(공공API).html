@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <!-- 
+      서울데이터포털
+      1.API인증키 받기 - 555042436e626c61363543516b7372
+      2.문서를 확인하고 요청인자값을 검토해야한다
+      3.데이터 처리량을 확인. (최대 1000건)
+      4.선택 옵션(원하는것만 뽑아오기)
+     -->
+
+    <select class="gu">
+    </select>
+
+
+
+    <script>
+
+      function getFetch(gu) {
+        fetch("http://openapi.seoul.go.kr:8088/555042436e626c61363543516b7372/json/PublicWiFiPlaceInfo/1/1000/" + gu)
+          .then(function (response) {
+            // console.log(response);
+            return response.json();
+          }).then(function (data) {
+            console.log(data);
+          })
+      }
+
+      //3.셀렉트 이벤트
+      var handleSelect = document.querySelector(".gu");
+      handleSelect.addEventListener("change", function () {
+        console.log(event.target.value);
+        // console.log(this.value);
+        // console.log(handleSelect.value);
+
+        getFetch(event.target.value);//이벤트가 발생할 때, 비동기함수(fetch)를 호출
+      });
+
+
+      //2.`구` 생성구문
+      function createGu() {
+        var gu_list = new Array("도봉구", "강북구", "노원구", "은평구", "마포구", "서대문구", "종로구",
+          "중구", "용산구", "성북구", "동대문구", "성동구", "중량구", "광진구", "강서구",
+          "양천구", "구로구", "영등포구", "금천구", "동작구",
+          "관악구", "서초구", "강남구", "송파구", "강동구");
+        gu_list.sort();
+        gu_list.unshift("선택");//앞에 추가
+        // console.log(gu_list);
+
+        var gu = document.querySelector(".gu");
+        for (var i = 0; i < gu_list.length; i++) {
+          var option = document.createElement("option");
+          option.innerHTML = gu_list[i];
+          gu.appendChild(option);//자식으로 추가
+        }
+      };
+
+      //1.즉시 실행 함수
+      (function () {
+        getFetch();
+        createGu();
+      })();
+
+
+    </script>
+
+
+  </body>
+
+</html>

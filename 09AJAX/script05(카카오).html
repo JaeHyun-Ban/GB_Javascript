@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1. 카카오 호출 -->
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <!-- <script src="js/kakao.js"></script> 저작권때문에 아마..? -->
+    <script>
+      //2. SDB를 초기화한다, 사용자의 JavaScriptKey를 설정할 것
+      Kakao.init('f80c539288e6a1c0860c93c58b8a3cc1');
+
+      //SDK초기화 여부를 판단(잘 됫는지 확인)
+      console.log(Kakao.isInitialized());
+
+
+    </script>
+
+
+
+  </head>
+
+  <body>
+    <!-- 3.  -->
+    <a id="reauthenticate-popup-btn" href="javascript:loginFormWithKakao()">
+      <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="222" />
+    </a>
+    <p id="reauthenticate-popup-result"></p>
+
+    <script type="text/javascript">
+      function loginFormWithKakao() {
+        Kakao.Auth.loginForm({
+          success: function (authObj) {
+            // alert(JSON.stringify(authObj));
+            /* 접근 권한 - 액세스 토큰을 저장 */
+            // console.log(authObj);
+            var token = authObj.access_token;
+            console.log(token)
+            /* https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-token 
+            성공한 토큰을 KaKao_SDK에서 사용할 수 있도록 할당 */
+            Kakao.Auth.setAccessToken(token);
+
+            /* 4. 사용자 계정정보를 얻는 함수 호출 */
+            getInfo();
+
+          },
+          fail: function (err) {
+            alert(JSON.stringify(err))
+          },
+        })
+      }
+      function showResult(result) {
+        document.getElementById('reauthenticate-popup-result').innerText = result
+      }
+
+      //사용자 계정정보 얻는 기능
+      function getInfo() {
+        /* 해당함수가 다시한번 카카오서버로 요청을해서 필요한 사용자 정보를 콜백함수로 얻어온다 */
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (res) {
+            console.log(res);
+            /* 숙제: 정보추출해보기 
+            1. 이메일 정보
+            2. 프로필 이미지
+            3. 이름
+            4. 닉네임
+            */
+          },
+          fail: function (error) {
+            alert(
+              'login success, but failed to request user information: ' + JSON.stringify(error)
+            );
+          },
+        })
+      }
+
+
+
+    </script>
+
+  </body>
+
+</html>

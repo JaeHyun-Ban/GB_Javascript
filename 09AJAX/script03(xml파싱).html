@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <!-- xml파일을 받아서 사용하기 -->
+    <script>
+      /*
+      예를들어 공공데이터 포털에서 받아온 데이터가 xml문서인 경우
+      우리가 사용할 수 있도록 데이터를 변환하는 작업을 해야하는데,
+      데이터 파싱 작업이라고 합니다.
+      xml문서를 파싱(DOMParser?)
+       */
+      fetch("data.xml").then(function (response) {
+        // console.log(response);
+        return response.text();
+      }).then(function (data) {
+        // console.log(data);
+        return new DOMParser().parseFromString(data, "text/xml");//data를 
+      }).then(function (data) {
+        console.log(data);
+        var result = data.getElementsByTagName("data");//태그 이름이 data인 엘리먼트
+        console.log(result.length);
+        for (var i = 0; i < result.length; i++) {
+          for (var j = 0; j < result.item(j).length; j++) {
+            console.log(result.item(i).children[j].innerHTML);
+
+          }
+
+
+          // console.log(result.item(i).children[0].innerHTML);
+          // console.log(result.item(i).children[1].innerHTML);
+          // console.log(result.item(i).children[2].innerHTML);
+        }
+
+
+      })
+
+    </script>
+
+
+  </body>
+
+</html>
