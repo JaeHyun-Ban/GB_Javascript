@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <script>
+      // console.log(fetch("~~~~~"));
+      /* 
+      fetch API모형
+      myfetch를 호출했을 때 promise객체를 돌려주게 되고, 여러분은 then함수안에 결과를 받을 
+      콜백함수만 정의해주면 시간이 얼마나 걸리턴, 콜백함수를 결과로 받을 수 있게된다
+      */
+      // function myfetch(url) {
+      //   console.log(url);
+
+      //   return new Promise(function (success, fail) {
+
+      //     //비동기적 작업 실행...
+      //     success("asd123...");
+      //   })
+
+      // }
+
+      // // var t = myfetch("https://localhost:5002/~~~~~");
+      // // console.log(t);
+      // myfetch("https://localhost:5002/~~~~~").then(function (response) {
+      //   console.log(response);/* A */
+      // })
+
+      //async는 function에 사용가능하며 `자동으로 비동기함수`가 되며
+      //Promise를 리턴값으로 반환한다
+      //1. sysnc키워드는(비동기)라는 뜻이며 함수에만 사용할 수 있다
+      //2. return값을 자동으로 Promise로 변경해준다
+      async function myfetch(url) {
+        console.log(url);
+        return "data....";
+      }
+
+      // var result = myfetch("~~~");
+      // console.log(result);
+      // result.then(function (data) {
+      //   console.log(data);
+      // })
+
+      myfetch("~~~").then(function (data) {
+        console.log(data);
+      })
+
+
+    </script>
+
+
+  </body>
+
+</html>

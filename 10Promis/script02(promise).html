@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+
+    <script>
+      // var promise = fetch("aaa123");
+      // console.log(promis);
+
+      /*
+      프로미스는 자바스크립트에 내장된 내장객체 이다
+      프로미스에서는 세가지의 상태메시지를 가진다
+      pending - 수행중
+      fulfilled - 성공적 완료
+      rejected - 실패(거절됨)
+      */
+      //Promis 생성 - 매개변수로 콜백함수를 전달받고
+      //(다시 함수의 매개변수로 resolve, reject 성공실패에 대한 함수를 받습니다)
+      var promise = new Promise(function (success, fail) {
+        console.log("바로실행");
+
+        setTimeout(function () {
+
+          //Promise성공시
+          success(10);
+          //Promise실패시
+          fail(new Error());
+
+        }, 1000);//5초 이후에 실행(다른 서버에 요청을 하고 결과를 돌려받는데 5초)
+
+      });
+
+      console.log(promise);
+
+      //Promise의 사용
+      //then: Primise가 정상적으로 실행된다면, 결과를 실행시켜주는 `콜백함수`
+      //.then: 성공결과, .catch: 실패(맨 마지막에 작성한다)
+      promise.then(function (data) {
+        console.log(data);
+      }).catch(function (error) {
+        console.log(error);
+      })
+
+      /* ------------------------------ */
+      //Promise사용 2
+      promise.then(function (data) {
+        console.log(data);
+        return data * 100;
+      }).then(function (data) {
+        console.log(data);
+        return data / 5;
+        //>`.then`의 리턴결과가 `다시 Promise`이기 때문에 `.then`으로 연쇄적으로 이어 나갈 수 있다
+      }).then(function (data) {
+        console.log(data);
+      })
+
+    </script>
+  </body>
+
+</html>

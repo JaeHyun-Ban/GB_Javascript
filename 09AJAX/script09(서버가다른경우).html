@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+
+  <body>
+
+    <h2>JSP의 서블릿으로 데이터로 요청(응답)</h2>
+
+    <button type="button" onclick="ajax()">ajax요청해보기</button>
+
+    <script>
+      //이클립스 서버로 요청을 보내보자
+      function ajax() {
+        //fetch("경로")
+        //https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Fetch%EC%9D%98_%EC%82%AC%EC%9A%A9%EB%B2%95
+        fetch("http://localhost:8181/AJAX/AjaxController", {
+
+          method: 'POST', // *GET, POST, PUT, DELETE, etc.
+          mode: 'no-cors', // no-cors(서버가 서로 달라도 ok), cors(corss > 서버가 다르면 허용x), *same-origin(같은서버만 ok)
+          // >서버가 다른 경우 cross origin 허용
+          headers: {
+            // 'Content-Type': 'application/json', //JSON형식 전송을 의미
+            'Content-Type': 'application/x-www-form-urlencoded',//>FORM형식 전송을 의미
+          },
+          //>hearder: 어떤 형식으로 보낼것인가
+          body: "id=kkk123&name=홍길동", // body data type must match "Content - Type" header(header의 타입과 맞춤형태로 보내줘야한다)
+          //>body: 어떤 내용으로 보낼 것 인가, 자바는 JSON을 모르기때문에 알려주는 작업을 진행해야한다(라이브러리 추가 + 작업(?))
+          //>FORM형식으로 보내기
+          //신경써주기(위)----------------------------------------------------------------
+          // cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+          // credentials: 'same-origin', // include, *same-origin, omit >>> 쿠키값
+          // redirect: 'follow', // manual, *follow, error
+          // referrer: 'no-referrer', // no-referrer, *client
+        })
+          .then(function (response) {
+            console.log(response);
+            return response.text();//받은 응답을 text로`
+          }).then(function (data) {
+            console.log(data);
+          })
+      }
+
+
+
+    </script>
+
+
+
+  </body>
+
+</html>
